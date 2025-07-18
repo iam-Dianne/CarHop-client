@@ -31,7 +31,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed w-full top-0 z-50 p-2 sm:p-3">
+    <header className="fixed w-full top-0 z-50 p-2 sm:p-3 sm:px-50">
       <div className="min-h-16 px-4 sm:px-8 py-2 backdrop-blur-md border border-white/30 bg-gray-100/40 text-gray-900 shadow-lg rounded-lg">
         <div className="flex items-center justify-between">
           <div className="brand h-12 flex items-center text-primary">
@@ -72,7 +72,7 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className={` py-3 px-2 transition-all duration-300 transform origin-top ${
+        className={`py-3 px-2 transition-all duration-300 transform origin-top ${
           isOpen
             ? "scale-y-100 opacity-100"
             : "scale-y-0 opacity-0 pointer-events-none"
