@@ -36,7 +36,7 @@ const LocationInput = ({ label }: { label: string }) => {
   };
 
   return (
-    <div className=" relative form-group flex flex-col gap-1 sm:w-1/2">
+    <div className=" relative form-group flex flex-col gap-1 sm:w-1/2 grow">
       <label htmlFor="" className="font-bold flex items-center gap-1">
         <FaLocationDot className="text-primary" />
         {label}
@@ -45,7 +45,7 @@ const LocationInput = ({ label }: { label: string }) => {
         type="text"
         value={query}
         onChange={handleInput}
-        className="p-2 border-primary-light/30 border rounded-md bg-gray-50"
+        className="p-2 border-gray-900/20 border rounded-md bg-gray-50"
         placeholder="City, address, point of interest"
       />
       {suggestions.length > 0 && (

@@ -1,16 +1,12 @@
-import React, { useState } from "react";
-import axios from "axios";
 import { FaCalendar } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
 import LocationInput from "./LocationInput";
 import Button from "./Button";
 
 const RentalInfoCard = ({ className }: { className: string }) => {
   return (
     <div
-      className={`w-full px-4 sm:px-8 py-5 backdrop-blur-md border border-primary-light/30 bg-gray-100/40 text-gray-900 shadow-lg rounded-lg ${className}`}
+      className={`w-full px-4 sm:px-8 py-5 backdrop-blur-md border border-gray-900/20 bg-gray-100/40 text-gray-900 shadow-lg rounded-lg ${className} snap-center`}
     >
-      <h3 className="font-bold text-lg mb-5">Book a car</h3>
       <form action="" className="flex flex-col gap-4">
         <div className="w-full flex flex-col sm:flex-row gap-5">
           <LocationInput label="Pickup Location" />
@@ -24,11 +20,11 @@ const RentalInfoCard = ({ className }: { className: string }) => {
             <div className="w-full flex gap-2">
               <input
                 type="date"
-                className="p-2 rounded-md border border-primary-light/30 bg-gray-50 w-2/3"
+                className="p-2 rounded-md border border-gray-900/20 bg-gray-50 w-2/3"
               />
               <input
                 type="time"
-                className="p-2 rounded-md border border-primary-light/30 bg-gray-50 w-1/3"
+                className="p-2 rounded-md border border-gray-900/20 bg-gray-50 w-1/3"
               />
             </div>
           </div>
@@ -39,11 +35,11 @@ const RentalInfoCard = ({ className }: { className: string }) => {
             <div className="w-full flex gap-2">
               <input
                 type="date"
-                className="p-2 rounded-md border border-primary-light/30 bg-gray-50 w-2/3"
+                className="p-2 rounded-md border border-gray-900/20 bg-gray-50 w-2/3"
               />
               <input
                 type="time"
-                className="p-2 rounded-md border border-primary-light/30 bg-gray-50 w-1/3"
+                className="p-2 rounded-md border border-gray-900/20 bg-gray-50 w-1/3"
               />
             </div>
           </div>
@@ -51,7 +47,7 @@ const RentalInfoCard = ({ className }: { className: string }) => {
         <Button
           label="Search"
           onClick={() => {}}
-          className="mt-5 sm:w-50 sm:self-center"
+          className="mt-2 sm:w-50 sm:self-center"
         />
       </form>
     </div>

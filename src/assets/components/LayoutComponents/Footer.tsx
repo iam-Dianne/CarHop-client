@@ -3,14 +3,14 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 text-gray-800 mt-10 border-t border-gray-300">
-      <div className="mx-auto px-4 py-10 sm:flex sm:justify-between space-y-5 gap-10 2xl:px-[350px]">
+    <footer className="bg-gray-100/40 backdrop-blur-md text-gray-800 mt-12 border-t border-gray-300 ">
+      <div className="mx-auto px-10 py-10 flex flex-wrap  sm:flex sm:justify-between space-y-5 gap-10 sm:px-20 2xl:px-[350px] ">
         {/* Brand */}
-        <div>
+        <div className="grow">
           <div className="brand h-12 flex items-center text-primary">
             <Link to={"/"} className="flex items-center gap-1">
               <img
-                src="../../../public/carhop-logo.png"
+                src="/carhop-logo.png"
                 alt="carhop-logo"
                 className="h-5 block "
               />
@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
 
         {/* Quick Links */}
-        <div>
+        <div className="grow">
           <h3 className="font-semibold mb-2">Quick Links</h3>
           <ul className="text-sm space-y-1">
             <li>
@@ -55,8 +55,40 @@ const Footer = () => {
           </ul>
         </div>
 
+        {/* Legal Information */}
+        <div className="w-grow">
+          <h3 className="font-semibold mb-2">Legal Information</h3>
+          <ul className="text-sm space-y-1">
+            <li>
+              <Link to="" className="hover:text-primary">
+                Legal Information
+              </Link>
+            </li>
+            <li>
+              <Link to="" className="hover:text-primary">
+                Damage Management Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="" className="hover:text-primary">
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="" className="hover:text-primary">
+                Deposit Policy
+              </Link>
+            </li>
+            <li>
+              <Link to="" className="hover:text-primary">
+                Terms and Conditions
+              </Link>
+            </li>
+          </ul>
+        </div>
+
         {/* Contact & Social */}
-        <div>
+        <div className="grow">
           <h3 className="font-semibold mb-2">Contact Us</h3>
           <p className="text-sm mb-2">Email: support@carhop.com</p>
           <p className="text-sm mb-4">Phone: (+63) 999 123 1234</p>
@@ -75,8 +107,7 @@ const Footer = () => {
       </div>
 
       <div className="text-center text-sm py-4 border-t border-gray-200 bg-gray-50">
-        © {new Date().getFullYear()} Made by Dianne Ramirez {"<3"}. All rights
-        reserved.
+        © {new Date().getFullYear()} Made by Dianne Ramirez {"<3"}
       </div>
     </footer>
   );

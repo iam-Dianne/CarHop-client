@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import Button from "./Button";
+import { Link, useLocation } from "react-router-dom";
+import Button from "../Button";
 import { FaBars } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -31,13 +32,13 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed w-full top-0 z-50 p-2 sm:p-3 sm:px-10 2xl:px-[300px]">
+    <header className="fixed w-full top-0 z-50 p-2 sm:pt-5 sm:px-10 2xl:px-[300px]">
       <div className="min-h-16 px-4 lg:px-8 py-2 backdrop-blur-md border border-white/30 bg-gray-100/40 text-gray-900 shadow-lg rounded-lg">
         <div className="flex items-center justify-between">
           <div className="brand h-12 flex items-center text-primary">
             <Link to={"/"} className="flex items-center gap-1">
               <img
-                src="../../../public/carhop-logo.png"
+                src="/carhop-logo.png"
                 alt="carhop-logo"
                 className="h-5 block "
               />
@@ -50,7 +51,9 @@ const Navbar = () => {
                 <li key={i}>
                   <Link
                     to={item.to}
-                    className="block py-1 px-3 w-full rounded-md hover:bg-gray-200 "
+                    className={`block py-1 px-3 w-full rounded-md hover:bg-gray-200 ${
+                      location.pathname === item.to ? "font-bold" : ""
+                    }`}
                   >
                     {item.label}
                   </Link>
@@ -94,7 +97,9 @@ const Navbar = () => {
             >
               <Link
                 to={item.to}
-                className="block py-1 px-5 w-full rounded-md hover:bg-gray-200 transition-colors duration-200"
+                className={`block py-1 px-3 w-full rounded-md hover:bg-gray-200 ${
+                  location.pathname === item.to ? "font-semibold" : ""
+                }`}
               >
                 {item.label}
               </Link>
