@@ -31,8 +31,8 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed w-full top-0 z-50 p-2 sm:p-3 sm:px-50">
-      <div className="min-h-16 px-4 sm:px-8 py-2 backdrop-blur-md border border-white/30 bg-gray-100/40 text-gray-900 shadow-lg rounded-lg">
+    <header className="fixed w-full top-0 z-50 p-2 sm:p-3 sm:px-10 2xl:px-[300px]">
+      <div className="min-h-16 px-4 lg:px-8 py-2 backdrop-blur-md border border-white/30 bg-gray-100/40 text-gray-900 shadow-lg rounded-lg">
         <div className="flex items-center justify-between">
           <div className="brand h-12 flex items-center text-primary">
             <Link to={"/"} className="flex items-center gap-1">
@@ -45,7 +45,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="flex gap-10">
-            <ul className="hidden sm:flex">
+            <ul className="hidden lg:flex">
               {menuItems.map((item, i) => (
                 <li key={i}>
                   <Link
@@ -59,7 +59,7 @@ const Navbar = () => {
             </ul>
             <div className="flex items-center gap-2">
               <Button label="Login" onClick={() => {}} variant="primary" />
-              <button onClick={toggleMenu} className="sm:hidden">
+              <button onClick={toggleMenu} className="lg:hidden">
                 <FaBars
                   className={`cursor-pointer ${isOpen ? "hidden" : "block"}`}
                 />
