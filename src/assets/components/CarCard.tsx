@@ -19,20 +19,20 @@ const CarCard = () => {
     <>
       {limitCars.map((car) => (
         <div className="w-full py-3 px-10 border-t border-gray-900/20">
-          <div key={car.id} className="flex gap-7">
+          <div key={car.id} className="flex flex-col lg:flex-row gap-7">
             <img
               src={car.image}
               alt={car.name}
-              className="h-[200px] rounded-md"
+              className="w-[400px] sm:w-[300px] lg:w-[250px] rounded-md self-center"
             />
-            <div className="w-full flex items-center justify-between">
-              <div>
+            <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-3">
+              <div className="flex flex-col items-center lg:items-start">
                 <h1 className="font-bold text-3xl">{car.name}</h1>
                 <h2 className="flex items-center gap-2 text-primary mb-2">
                   <span className="text-lg font-bold">{car.rating}</span>{" "}
                   <FaStar />
                 </h2>
-                <ul className="text-gray-600 flex gap-3">
+                <ul className="text-gray-600 hidden lg:flex gap-3">
                   <li className="flex items-center gap-1">
                     <FaCar />
                     {car.type}
@@ -88,7 +88,7 @@ const CarCard = () => {
                   </span>
                 </button>
               </div>
-              <div className="text-right">
+              <div className="flex flex-col items-center lg:items-end">
                 <h1 className="text-xl font-bold ">
                   ${car.pricePerDay}.00/day
                 </h1>
@@ -105,7 +105,7 @@ const CarCard = () => {
             } my-10`}
           >
             <h3 className="text-lg font-bold mb-2">Full Details</h3>
-            <ul className="text-gray-600 flex gap-3 mb-4">
+            <ul className="text-gray-600 flex flex-col lg:flex-row gap-3 mb-4">
               <li className="flex items-center gap-1">
                 <FaCar />
                 {car.type}

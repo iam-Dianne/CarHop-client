@@ -8,7 +8,11 @@ const FeaturedCars = () => {
 
   return (
     <div className="mt-20 flex flex-col items-center">
-      <Caption label="RECENTLY VIEWED" className="mb-10" />
+      <Caption label="FEATURED CARS" className="mb-2" />
+      <p className="mb-10">
+        Choose from a variety of vehicles catered to your needs and ensured to
+        be the best
+      </p>
       <CarCard />
       <Button
         label="Browse more >"
