@@ -1,3 +1,4 @@
+import Faqs from "../components/HomepageSections/Faqs";
 import FeaturedCars from "../components/HomepageSections/FeaturedCars";
 import Hero from "../components/HomepageSections/Hero";
 import Whyus from "../components/HomepageSections/Whyus";
@@ -12,6 +13,7 @@ const Homepage = () => {
       </section>
       <FeaturedCars />
       <Whyus />
+      <Faqs />
     </div>
   );
 };

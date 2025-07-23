@@ -2,9 +2,7 @@ import React from "react";
 import Caption from "../Caption";
 import Button from "../Button";
 import { IoCarSportOutline } from "react-icons/io5";
-import { RiCoinsLine } from "react-icons/ri";
 import { BsCoin } from "react-icons/bs";
-import { BiSupport } from "react-icons/bi";
 import { MdSupportAgent } from "react-icons/md";
 
 const Whyus = () => {
@@ -12,7 +10,7 @@ const Whyus = () => {
     <div className="xl:h-screen w-full mt-20 flex flex-col xl:flex-row items-center gap-20 xl:gap-28">
       <div className="col xl:w-1/2 text-center xl:text-left">
         <Caption label="WHY CHOOSE US" className="mb-3 inline-block" />
-        <h1 className="font-extrabold text-4xl sm:text-3 xl mb-2">
+        <h1 className="font-extrabold sm:text-3xl mb-2">
           Best deals for the best experience
         </h1>
         <p className="mb-5 ">

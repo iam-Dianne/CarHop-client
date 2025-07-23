@@ -29,7 +29,7 @@ const Hero = () => {
           </div>
           <div className="col hidden xl:flex xl:items-center mt-20 ">
             <img
-              src="../../../public/hero-car.png"
+              src="../../../hero-car.png"
               alt="hero car image"
               className="transform -scale-x-100 w-[600px] xl:w-[800px]"
             />
