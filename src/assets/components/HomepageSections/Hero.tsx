@@ -9,7 +9,7 @@ const Hero = () => {
         <div className="w-full flex justify-center gap-10">
           <div className="col xl:w-[500px] flex flex-col items-center xl:items-start text-center xl:text-left ">
             <Caption label="BROWSE. BOOK. DRIVE" className="font-bold" />
-            <h1 className="text-5xl sm:text-6xl font-bold mt-5 mb-3">
+            <h1 className="text-5xl sm:text-5xl 2xl:text-6xl font-bold mt-5 mb-3">
               Car<span className="text-primary">Hop</span> to your next
               destination
             </h1>

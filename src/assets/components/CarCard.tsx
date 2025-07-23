@@ -27,7 +27,7 @@ const CarCard = () => {
             />
             <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-3">
               <div className="flex flex-col items-center lg:items-start">
-                <h1 className="font-bold text-3xl">{car.name}</h1>
+                <h1 className="font-bold text-2xl">{car.name}</h1>
                 <h2 className="flex items-center gap-2 text-primary mb-2">
                   <span className="text-lg font-bold">{car.rating}</span>{" "}
                   <FaStar />
