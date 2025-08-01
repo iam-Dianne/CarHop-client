@@ -27,7 +27,7 @@ const Button = ({
 }: ButtonProps) => {
   const baseStyles =
     "px-4 py-2 rounded-md font-semibold transition duration-200 text-sm cursor-pointer";
-  const disabledStyles = disabled ? "opacity-50 cursor-not-allowed" : "";
+  const disabledStyles = disabled ? "opacity-60 cursor-not-allowed" : "";
   const style = variantStyles[variant];
 
   return (

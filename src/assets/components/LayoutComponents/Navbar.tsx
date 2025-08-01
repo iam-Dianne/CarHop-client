@@ -4,7 +4,11 @@ import Button from "../Button";
 import { FaBars } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
 
-const Navbar = () => {
+type NavbarProps = {
+  onLoginClick: () => void;
+};
+
+const Navbar = ({ onLoginClick }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -17,8 +21,7 @@ const Navbar = () => {
     { label: "Book now", to: "/booking" },
     { label: "Vehicles", to: "/vehicles" },
     { label: "About", to: "/about" },
-    { label: "FAQs", to: "/faqs" },
-    { label: "Contact us", to: "/contact3" },
+    { label: "Contact us", to: "/contact" },
   ];
 
   const delays = [
@@ -61,7 +64,7 @@ const Navbar = () => {
               ))}
             </ul>
             <div className="flex items-center gap-2">
-              <Button label="Login" onClick={() => {}} variant="primary" />
+              <Button label="Login" onClick={onLoginClick} variant="primary" />
               <button onClick={toggleMenu} className="lg:hidden">
                 <FaBars
                   className={`cursor-pointer ${isOpen ? "hidden" : "block"}`}

@@ -4,8 +4,9 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-import Homepage from "./assets/pages/Homepage";
+import { Toaster } from "sonner";
 import MainLayout from "./assets/layouts/MainLayout";
+import Homepage from "./assets/pages/Homepage";
 
 const App = () => {
   const router = createBrowserRouter(
@@ -17,8 +18,12 @@ const App = () => {
       </>
     )
   );
-
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Toaster richColors position="top-right" />
+      <RouterProvider router={router} />
+    </>
+  );
 };
 
 export default App;

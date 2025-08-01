@@ -18,8 +18,11 @@ const CarCard = () => {
   return (
     <>
       {limitCars.map((car) => (
-        <div className="w-full py-3 px-10 border-t border-gray-900/20">
-          <div key={car.id} className="flex flex-col lg:flex-row gap-7">
+        <div
+          key={car.id}
+          className="w-full py-3 px-10 border-t border-gray-900/20"
+        >
+          <div className="flex flex-col lg:flex-row gap-7">
             <img
               src={car.image}
               alt={car.name}
@@ -81,9 +84,9 @@ const CarCard = () => {
                   More details{" "}
                   <span>
                     {activeDropdown === car.name ? (
-                      <RiArrowDropDownLine />
-                    ) : (
                       <RiArrowDropUpLine />
+                    ) : (
+                      <RiArrowDropDownLine />
                     )}
                   </span>
                 </button>
