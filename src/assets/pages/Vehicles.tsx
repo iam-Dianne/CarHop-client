@@ -1,4 +1,3 @@
-import React from "react";
 import Caption from "../components/Caption";
 import CarCard from "../components/CarCard";
 
