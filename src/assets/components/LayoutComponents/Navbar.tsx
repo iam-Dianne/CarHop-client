@@ -1,16 +1,24 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../Button";
 import { FaBars } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
+import { toast } from "sonner";
 
 type NavbarProps = {
   onLoginClick: () => void;
 };
 
 const Navbar = ({ onLoginClick }: NavbarProps) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, [location]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -33,6 +41,14 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
     "delay-600",
     "delay-700",
   ];
+
+  const handleLogout = async () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    toast.success("Successfully logged out");
+    navigate("/");
+  };
 
   return (
     <header className="fixed w-full top-0 z-50 p-2 sm:pt-5 sm:px-10 2xl:px-[300px]">
@@ -64,7 +80,20 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
               ))}
             </ul>
             <div className="flex items-center gap-2">
-              <Button label="Login" onClick={onLoginClick} variant="primary" />
+              {isLoggedIn ? (
+                <Button
+                  label="Logout"
+                  onClick={handleLogout}
+                  variant="primary"
+                />
+              ) : (
+                <Button
+                  label="Login"
+                  onClick={onLoginClick}
+                  variant="primary"
+                />
+              )}
+
               <button onClick={toggleMenu} className="lg:hidden">
                 <FaBars
                   className={`cursor-pointer ${isOpen ? "hidden" : "block"}`}

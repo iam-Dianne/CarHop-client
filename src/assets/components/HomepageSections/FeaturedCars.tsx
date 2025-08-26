@@ -13,7 +13,7 @@ const FeaturedCars = () => {
         Choose from a variety of vehicles catered to your needs and ensured to
         be the best
       </p>
-      <CarCard />
+      <CarCard limit={3} />
       <Button
         label="Browse more >"
         onClick={() => {

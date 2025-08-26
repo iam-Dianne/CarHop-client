@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import cars from "../../data/cars";
 import { FaCar, FaCheck, FaGasPump, FaStar, FaUsers } from "react-icons/fa";
 import { GiCarDoor } from "react-icons/gi";
@@ -7,17 +8,23 @@ import { TbAirConditioning, TbManualGearbox } from "react-icons/tb";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import Button from "./Button";
 
-const CarCard = () => {
-  const limitCars = cars.slice(0, 3);
+interface CarCardProps {
+  limit?: number;
+}
+
+const CarCard = ({ limit }: CarCardProps) => {
   const [activeDropdown, setActiveDropdown] = useState("");
+  const navigate = useNavigate();
   const toggleDropdown = (dropdown: string) => {
     // so this basically says: is this dropdown already open? if not the drop down eyy
     setActiveDropdown((prev) => (prev === dropdown ? "" : dropdown));
   };
 
+  const displayedCars = limit ? cars.slice(0, limit) : cars;
+
   return (
     <>
-      {limitCars.map((car) => (
+      {displayedCars.map((car) => (
         <div
           key={car.id}
           className="w-full py-3 px-10 border-t border-gray-900/20"
@@ -98,7 +105,12 @@ const CarCard = () => {
                 <p className="text-gray-600 mb-5">
                   TOTAL ${car.pricePerDay}.00/day
                 </p>
-                <Button label="Book now" onClick={() => {}} />
+                <Button
+                  label="Check Availability"
+                  onClick={() => {
+                    navigate("/booking");
+                  }}
+                />
               </div>
             </div>
           </div>

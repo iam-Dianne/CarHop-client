@@ -2,6 +2,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,6 +25,7 @@ type loginForm = z.infer<typeof loginFormSchema>;
 const UserLogin = ({ onCancel, onSignup }: UserLoginProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const {
     register,
@@ -45,8 +47,13 @@ const UserLogin = ({ onCancel, onSignup }: UserLoginProps) => {
       });
 
       if (res.data && res.data.success) {
+        // storing user token
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        // success messages
         toast.success(res.data.message);
         console.log(res.data.message);
+        navigate("/");
         onCancel();
       } else {
         setErrorMessage(res.data.message);

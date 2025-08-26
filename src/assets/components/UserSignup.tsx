@@ -206,7 +206,7 @@ const UserSignup = ({ onCancel, onLogin, onSignupSuccess }: UserLoginProps) => {
             )}
             <Button
               disabled={isSubmitting ? true : false}
-              label={isSubmitting ? "Loading..." : "Submit"}
+              label={isSubmitting ? "Loading..." : "Signup"}
               onClick={() => {}}
               className="mt-8"
             />
