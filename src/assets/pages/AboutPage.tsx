@@ -1,12 +1,14 @@
 import Caption from "../components/Caption";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 import { IoCalendar, IoCard, IoCarSportOutline } from "react-icons/io5";
 import { BsCoin } from "react-icons/bs";
 import { MdSupportAgent } from "react-icons/md";
-import { FaCreditCard, FaRegCalendarCheck } from "react-icons/fa6";
 import Faqs from "../components/HomepageSections/Faqs";
 
 const AboutPage = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen sm:pt-[120px] pt-[100px] px-7 sm:px-20 lg:px-[100px] xl:px-[200px] 2xl:px-[450px] text-gray-900">
       <div className="flex flex-col items-center text-center">
@@ -108,7 +110,14 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
-
+        <Button
+          label="Book now"
+          onClick={() => {
+            navigate("/booking");
+          }}
+          variant="primary"
+          className="mt-20 "
+        />
         {/* FAQS */}
         <div className="mt-24">
           <Faqs />

@@ -91,7 +91,7 @@ const Footer = () => {
         <div className="grow">
           <h3 className="font-semibold mb-2">Contact Us</h3>
           <p className="text-sm mb-2">Email: support@carhop.com</p>
-          <p className="text-sm mb-4">Phone: (+63) 999 123 1234</p>
+          <p className="text-sm mb-4">Phone: (+1) 999 1234</p>
           <div className="flex gap-4 text-xl">
             <a href="#" aria-label="Facebook" className="hover:text-primary">
               <FaFacebook />
