@@ -1,6 +1,8 @@
 import { IoChatbubble, IoPaperPlane } from "react-icons/io5";
 import { MdOutlineCall } from "react-icons/md";
 import { RiTwitterXFill } from "react-icons/ri";
+import Button from "../components/Button";
+import { toast } from "sonner";
 
 const ContactPage = () => {
   return (
@@ -60,19 +62,27 @@ const ContactPage = () => {
                 className="w-full p-2 rounded-md border border-gray-900/20 bg-gray-50"
               />
             </div>
+            <Button
+              label="Send Message"
+              onClick={() => {
+                toast.success("Message sent!");
+              }}
+              variant="primary"
+              className="mt-2"
+            />
           </form>
         </div>
         <div className="col lg:w-2/5">
           <h4 className="font-bold text-xl">Chat with us</h4>
           Speak to our friendly team via our live chat!
           <ul className="mt-4 flex flex-col gap-2">
-            <li className="flex items-center gap-2 underline hover:text-primary">
+            <li className="flex items-center gap-2 underline hover:text-primary cursor-pointer">
               <IoChatbubble /> Start a live chat
             </li>
-            <li className="flex items-center gap-2 underline hover:text-primary">
+            <li className="flex items-center gap-2 underline hover:text-primary cursor-pointer">
               <IoPaperPlane /> Send us an email
             </li>
-            <li className="flex items-center gap-2 underline hover:text-primary">
+            <li className="flex items-center gap-2 underline hover:text-primary cursor-pointer">
               <RiTwitterXFill /> Message us on X
             </li>
           </ul>

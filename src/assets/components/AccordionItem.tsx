@@ -17,7 +17,7 @@ const AccordionItem = ({ title, content }: itemtypes) => {
       <button
         type="button"
         onClick={toggleAccordion}
-        className="w-full text-left text-lg xl:text-xl font-bold focus:outline-none py-2 flex items-center justify-between"
+        className="w-full text-left text-lg xl:text-xl font-bold focus:outline-none py-2 flex items-center justify-between cursor-pointer"
       >
         <div>{title}</div>
         <div>
@@ -29,11 +29,11 @@ const AccordionItem = ({ title, content }: itemtypes) => {
         </div>
       </button>
       <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        className={`grid transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         }`}
       >
-        <div className="pb-5">{content}</div>
+        <div className="pb-5 overflow-hidden">{content}</div>
       </div>
     </div>
   );

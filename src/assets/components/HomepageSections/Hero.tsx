@@ -1,8 +1,10 @@
 import Caption from "../Caption";
 import Button from "../Button";
 import RentalInfoCard from "../RentalInfoCard";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className="h-screen w-full flex flex-col justify-center gap-5 2xl:pt-24 2xl:gap-24 snap-center">
       <div className="">
@@ -19,10 +21,18 @@ const Hero = () => {
               our easy-to-use car rental platform.
             </p>
             <div className="flex gap-5">
-              <Button label="Book now" onClick={() => {}} variant="primary" />
+              <Button
+                label="Book now"
+                onClick={() => {
+                  navigate("/booking");
+                }}
+                variant="primary"
+              />
               <Button
                 label="Learn more >"
-                onClick={() => {}}
+                onClick={() => {
+                  navigate("/about");
+                }}
                 variant="tertiary"
               />
             </div>

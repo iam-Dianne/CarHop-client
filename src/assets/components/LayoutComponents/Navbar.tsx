@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "../Button";
 import { FaBars } from "react-icons/fa";
-import { FaX } from "react-icons/fa6";
+import { FaRegCircleUser, FaX } from "react-icons/fa6";
 import { toast } from "sonner";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 type NavbarProps = {
   onLoginClick: () => void;
@@ -12,6 +13,7 @@ type NavbarProps = {
 const Navbar = ({ onLoginClick }: NavbarProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -22,6 +24,10 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleProfile = () => {
+    setIsProfileOpen(!isProfileOpen);
   };
 
   const menuItems = [
@@ -48,6 +54,7 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
     setIsLoggedIn(false);
     toast.success("Successfully logged out");
     navigate("/");
+    setIsProfileOpen(false);
   };
 
   return (
@@ -64,7 +71,7 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
               <span className="font-bold cursor-pointer">CarHop Rentals</span>
             </Link>
           </div>
-          <div className="flex gap-10">
+          <div className="flex gap-4">
             <ul className="hidden lg:flex">
               {menuItems.map((item, i) => (
                 <li key={i}>
@@ -79,14 +86,21 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
                 </li>
               ))}
             </ul>
-            <div className="flex items-center gap-2">
+            <div className="relative flex items-center gap-2">
               {isLoggedIn ? (
-                <Button
-                  label="Logout"
-                  onClick={handleLogout}
-                  variant="primary"
-                />
+                <button
+                  onClick={toggleProfile}
+                  className="cursor-pointer hidden lg:flex items-center"
+                >
+                  <FaRegCircleUser className=" text-xl" />
+                  <RiArrowDropDownLine className="text-xl" />
+                </button>
               ) : (
+                // <Button
+                //   label="Logout"
+                //   onClick={handleLogout}
+                //   variant="primary"
+                // />
                 <Button
                   label="Login"
                   onClick={onLoginClick}
@@ -106,6 +120,38 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
           </div>
         </div>
       </div>
+      {/* profile dropdown */}
+      <div
+        className={`absolute right-10 w-40 py-3 px-2 transition-all duration-300 transform origin-top ${
+          isProfileOpen
+            ? "scale-y-100 opacity-100"
+            : "scale-y-0 opacity-0 pointer-events-none"
+        } backdrop-blur-md border border-white/30 bg-text/40 shadow-lg rounded-lg mt-2`}
+        style={{
+          transformOrigin: "top",
+          transitionTimingFunction: "ease-in-out",
+        }}
+      >
+        <ul>
+          <li>
+            <Link
+              to={"/profile"}
+              className="block py-1 px-3 rounded-md  hover:bg-gray-200"
+            >
+              Profile
+            </Link>
+          </li>
+          <li>
+            <button
+              onClick={handleLogout}
+              className="block py-1 px-3 rounded-md  hover:bg-gray-200 w-full text-start"
+            >
+              Logout
+            </button>
+          </li>
+        </ul>
+      </div>
+      {/* hamburger menu dropdown */}
       <div
         className={`py-3 px-2 transition-all duration-300 transform origin-top ${
           isOpen
@@ -118,6 +164,22 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
         }}
       >
         <ul>
+          <li>
+            <Link
+              to={"/profile"}
+              className="block py-1 px-3 w-full rounded-md hover:bg-gray-200"
+            >
+              Profile
+            </Link>
+          </li>
+          <li className="border-b border-gray-400 mb-1 pb-1">
+            <Link
+              to={"/profile"}
+              className="block py-1 px-3 w-full rounded-md hover:bg-gray-200"
+            >
+              Logout
+            </Link>
+          </li>
           {menuItems.map((item, i) => (
             <li
               key={i}

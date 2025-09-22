@@ -25,9 +25,9 @@ const AboutPage = () => {
           special moments.
         </p>
         <div className="flex flex-col mt-10 gap-14 sm:px-[200px]">
-          <div className=" row flex items-center justify-center gap-8 text-start ">
+          <div className=" row flex flex-col xl:flex-row items-center justify-center gap-8 text-start ">
             <IoCarSportOutline className="text-primary text-6xl" />
-            <div className="xl:w-3/4">
+            <div className="xl:w-3/4 text-center xl:text-start">
               <h4 className="font-bold mb-1 sm:text-xl">
                 Wide Vehicle Selection
               </h4>
@@ -39,8 +39,9 @@ const AboutPage = () => {
               </p>
             </div>
           </div>
-          <div className="row flex items-center justify-center gap-8 text-end">
-            <div className="xl:w-3/4">
+          <div className="row flex flex-col xl:flex-row items-center justify-center gap-8 text-end">
+            <BsCoin className="text-primary text-6xl block xl:hidden" />
+            <div className="xl:w-3/4 text-center xl:text-start">
               <h4 className="font-bold mb-1 sm:text-xl">
                 Transparent & Fair Pricing
               </h4>
@@ -50,11 +51,11 @@ const AboutPage = () => {
                 confidence, knowing exactly what you're paying for.
               </p>
             </div>
-            <BsCoin className="text-primary text-6xl" />
+            <BsCoin className="text-primary text-6xl hidden xl:block" />
           </div>
-          <div className="row flex items-center justify-center gap-8 text-start">
+          <div className="row flex flex-col xl:flex-row items-center justify-center gap-8 text-start">
             <MdSupportAgent className="text-primary text-6xl" />
-            <div className="xl:w-3/4">
+            <div className="xl:w-3/4 text-center xl:text-start">
               <h4 className="font-bold mb-1 sm:text-xl">
                 Transparent & Fair Pricing
               </h4>

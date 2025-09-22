@@ -1,10 +1,13 @@
 import Caption from "../Caption";
 import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 import { IoCarSportOutline } from "react-icons/io5";
 import { BsCoin } from "react-icons/bs";
 import { MdSupportAgent } from "react-icons/md";
 
 const Whyus = () => {
+  const navigate = useNavigate();
+
   return (
     <div className=" w-full mt-20 mb-20 flex flex-col xl:flex-row items-center gap-20 xl:gap-28">
       <div className="col xl:w-1/2 text-center xl:text-left">
@@ -20,7 +23,12 @@ const Whyus = () => {
           seamless rental experience that caters to both everyday needs and
           special moments.
         </p>
-        <Button label="More details" onClick={() => {}} />
+        <Button
+          label="More details"
+          onClick={() => {
+            navigate("/about");
+          }}
+        />
       </div>
       <div className="col xl:w-1/2 flex flex-col gap-7">
         <div className="row flex flex-col xl:flex-row items-center gap-8 text-center xl:text-left">
