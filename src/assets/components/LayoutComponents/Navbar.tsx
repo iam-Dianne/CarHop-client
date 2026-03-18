@@ -121,86 +121,63 @@ const Navbar = ({ onLoginClick }: NavbarProps) => {
         </div>
       </div>
       {/* profile dropdown */}
-      <div
-        className={`absolute right-10 w-40 py-3 px-2 transition-all duration-300 transform origin-top ${
-          isProfileOpen
-            ? "scale-y-100 opacity-100"
-            : "scale-y-0 opacity-0 pointer-events-none"
-        } backdrop-blur-md border border-white/30 bg-text/40 shadow-lg rounded-lg mt-2`}
-        style={{
-          transformOrigin: "top",
-          transitionTimingFunction: "ease-in-out",
-        }}
-      >
-        <ul>
-          <li>
-            <Link
-              to={"/profile"}
-              className="block py-1 px-3 rounded-md  hover:bg-gray-200"
-            >
-              Profile
-            </Link>
-          </li>
-          <li>
-            <button
-              onClick={handleLogout}
-              className="block py-1 px-3 rounded-md  hover:bg-gray-200 w-full text-start"
-            >
-              Logout
-            </button>
-          </li>
-        </ul>
-      </div>
-      {/* hamburger menu dropdown */}
-      <div
-        className={`py-3 px-2 transition-all duration-300 transform origin-top ${
-          isOpen
-            ? "scale-y-100 opacity-100"
-            : "scale-y-0 opacity-0 pointer-events-none"
-        } backdrop-blur-md border border-white/30 bg-text/40 shadow-lg rounded-lg mt-2`}
-        style={{
-          transformOrigin: "top",
-          transitionTimingFunction: "ease-in-out",
-        }}
-      >
-        <ul>
-          <li>
-            <Link
-              to={"/profile"}
-              className="block py-1 px-3 w-full rounded-md hover:bg-gray-200"
-            >
-              Profile
-            </Link>
-          </li>
-          <li className="border-b border-gray-400 mb-1 pb-1">
-            <Link
-              to={"/profile"}
-              className="block py-1 px-3 w-full rounded-md hover:bg-gray-200"
-            >
-              Logout
-            </Link>
-          </li>
-          {menuItems.map((item, i) => (
-            <li
-              key={i}
-              className={`transform transition-all duration-500 ${
-                isOpen
-                  ? `opacity-100 translate-y-0 ${delays[i]}`
-                  : "opacity-0 -translate-y-2 delay-0"
-              }`}
-            >
+      {isProfileOpen && (
+        <div className="absolute right-10 w-40 py-3 px-2 backdrop-blur-md border border-white/30 bg-text/40 shadow-lg rounded-lg mt-2">
+          <ul>
+            <li>
               <Link
-                to={item.to}
-                className={`block py-1 px-3 w-full rounded-md hover:bg-gray-200 ${
-                  location.pathname === item.to ? "font-semibold" : ""
-                }`}
+                to={"/profile"}
+                className="block py-1 px-3 rounded-md hover:bg-gray-200"
               >
-                {item.label}
+                Profile
               </Link>
             </li>
-          ))}
-        </ul>
-      </div>
+            <li>
+              <button
+                onClick={handleLogout}
+                className="block py-1 px-3 rounded-md hover:bg-gray-200 w-full text-start"
+              >
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
+      {/* hamburger menu dropdown */}
+      {isOpen && (
+        <div className="py-3 px-2 backdrop-blur-md border border-white/30 bg-text/40 shadow-lg rounded-lg mt-2">
+          <ul>
+            <li>
+              <Link
+                to={"/profile"}
+                className="block py-1 px-3 w-full rounded-md hover:bg-gray-200"
+              >
+                Profile
+              </Link>
+            </li>
+            <li className="border-b border-gray-400 mb-1 pb-1">
+              <Link
+                to={"/profile"}
+                className="block py-1 px-3 w-full rounded-md hover:bg-gray-200"
+              >
+                Logout
+              </Link>
+            </li>
+            {menuItems.map((item, i) => (
+              <li key={i}>
+                <Link
+                  to={item.to}
+                  className={`block py-1 px-3 w-full rounded-md hover:bg-gray-200 ${
+                    location.pathname === item.to ? "font-semibold" : ""
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 };
