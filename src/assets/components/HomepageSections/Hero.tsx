@@ -46,7 +46,9 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <RentalInfoCard className="hidden 2xl:block" />
+      <div className="hidden 2xl:block w-full px-4 sm:px-8 py-5 backdrop-blur-md border border-gray-900/20 bg-gray-100/40 text-gray-900 shadow-lg rounded-lg snap-center">
+        <RentalInfoCard />
+      </div>
     </section>
   );
 };

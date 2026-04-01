@@ -1,21 +1,21 @@
+import React from "react";
+
+type ButtonVariant = "primary" | "secondary" | "tertiary" | "danger";
+
 type ButtonProps = {
   label: string;
   onClick: () => void;
   variant?: ButtonVariant;
   disabled?: boolean;
   className?: string;
+  type?: "button" | "submit" | "reset";
 };
 
-type ButtonVariant = "primary" | "secondary" | "tertiary" | "danger";
-
 const variantStyles: Record<ButtonVariant, string> = {
-  primary:
-    "bg-primary hover:bg-primary-dark hover:shadow-lg text-text bg-linear-to-r from-primary to-primray-light",
-  secondary:
-    "hover:border-primary/30 border-gray-100 border-b text-primary rounded-none",
-  tertiary:
-    "hover:border-primary border-b-2 border-gray-100 rounded-none text-primary",
-  danger: "bg-red-600 hover:bg-red-700 hover:shadow-lg",
+  primary: "bg-primary hover:bg-primary-dark text-white rounded-md",
+  secondary: "border border-gray-300 text-gray-700 rounded-md",
+  tertiary: "border-b-2 border-gray-300 text-gray-700",
+  danger: "bg-red-600 hover:bg-red-700 text-white rounded-md",
 };
 
 const Button = ({
@@ -24,17 +24,16 @@ const Button = ({
   variant = "primary",
   disabled = false,
   className = "",
+  type = "button",
 }: ButtonProps) => {
-  const baseStyles =
-    "px-4 py-2 rounded-md font-semibold transition duration-200 text-sm cursor-pointer";
-  const disabledStyles = disabled ? "opacity-60 cursor-not-allowed" : "";
-  const style = variantStyles[variant];
-
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${baseStyles} ${style} ${disabledStyles} ${className}`}
+      className={`${variantStyles[variant]} ${className} ${
+        disabled ? "opacity-60 cursor-not-allowed" : ""
+      } px-4 py-2 font-semibold text-sm`}
     >
       {label}
     </button>

@@ -2,13 +2,22 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FaLocationDot } from "react-icons/fa6";
 
-const LocationInput = ({ label }: { label: string }) => {
-  const [query, setQuery] = useState("");
+const LocationInput = ({
+  label,
+  userInput,
+  setUserInput,
+}: {
+  label: string;
+  userInput: string;
+  setUserInput: (value: string) => void;
+}) => {
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
   const handleInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setQuery(value);
+
+    // update parent state directly
+    setUserInput(value);
 
     if (value.length > 2) {
       try {
@@ -23,7 +32,7 @@ const LocationInput = ({ label }: { label: string }) => {
           (item: any) =>
             item.properties.name +
             (item.properties.city ? ", " + item.properties.city : "") +
-            (item.properties.country ? ", " + item.properties.country : "")
+            (item.properties.country ? ", " + item.properties.country : ""),
         );
 
         setSuggestions(results);
@@ -36,25 +45,27 @@ const LocationInput = ({ label }: { label: string }) => {
   };
 
   return (
-    <div className=" relative form-group flex flex-col gap-1 sm:w-1/2 grow">
-      <label htmlFor="" className="font-bold flex items-center gap-1">
+    <div className="relative form-group flex flex-col gap-1 sm:w-1/2 grow">
+      <label className="font-bold flex items-center gap-1">
         <FaLocationDot className="text-primary" />
         {label}
       </label>
+
       <input
         type="text"
-        value={query}
+        value={userInput}
         onChange={handleInput}
-        className="p-2 border-gray-900/20 border rounded-md bg-gray-50"
+        className="p-2 border-gray-900/20 border rounded-md bg-gray-50 w-full"
         placeholder="City, address, point of interest"
       />
+
       {suggestions.length > 0 && (
         <ul className="absolute z-10 top-20 left-0 right-0 bg-white border border-gray-200 rounded shadow mt-1">
           {suggestions.map((suggestion, i) => (
             <li
               key={i}
               onClick={() => {
-                setQuery(suggestion);
+                setUserInput(suggestion);
                 setSuggestions([]);
               }}
               className="px-3 py-1 hover:bg-gray-100 cursor-pointer"

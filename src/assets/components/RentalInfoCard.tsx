@@ -1,56 +1,106 @@
+import React from "react";
 import { FaCalendar } from "react-icons/fa";
 import LocationInput from "./LocationInput";
 import Button from "./Button";
+import type { BookingData } from "../types/booking";
 
-const RentalInfoCard = ({ className }: { className: string }) => {
+type Props = {
+  bookingData: BookingData;
+  setBookingData: React.Dispatch<React.SetStateAction<BookingData>>;
+  onNext: () => void;
+};
+
+const RentalInfoCard = ({ bookingData, setBookingData, onNext }: Props) => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!bookingData.location) {
+      alert("Please enter a location");
+      return;
+    }
+    onNext();
+  };
+
+  if (!bookingData) return null; // safety check
+
   return (
-    <div
-      className={`w-full px-4 sm:px-8 py-5 backdrop-blur-md border border-gray-900/20 bg-gray-100/40 text-gray-900 shadow-lg rounded-lg ${className} snap-center`}
-    >
-      <form action="" className="flex flex-col gap-4">
-        <div className="w-full flex flex-col sm:flex-row gap-5">
-          <LocationInput label="Pickup Location" />
-          <LocationInput label="Drop-off Location" />
-        </div>
-        <div className="w-full flex gap-5 flex-col sm:flex-row  ">
-          <div className="form-group flex flex-col gap-1 sm:w-1/2">
-            <label htmlFor="" className="font-bold flex items-center gap-1">
-              <FaCalendar className="text-primary" /> Pickup Date & Time
-            </label>
-            <div className="w-full flex gap-2">
-              <input
-                type="date"
-                className="p-2 rounded-md border border-gray-900/20 bg-gray-50 w-2/3"
-              />
-              <input
-                type="time"
-                className="p-2 rounded-md border border-gray-900/20 bg-gray-50 w-1/3"
-              />
-            </div>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <LocationInput
+        label="Pickup / Drop-off Location"
+        userInput={bookingData.location}
+        setUserInput={(value) =>
+          setBookingData((prev) => ({ ...prev, location: value }))
+        }
+      />
+
+      <div className="flex flex-col sm:flex-row gap-5">
+        <div className="flex flex-col gap-1 sm:w-1/2">
+          <label className="font-bold flex items-center gap-1">
+            <FaCalendar className="text-primary" /> Pickup Date & Time
+          </label>
+          <div className="flex gap-2">
+            <input
+              type="date"
+              value={bookingData.pickupDate}
+              onChange={(e) =>
+                setBookingData((prev) => ({
+                  ...prev,
+                  pickupDate: e.target.value,
+                }))
+              }
+              className="p-2 border-gray-900/20 border rounded-md bg-gray-50 w-2/3"
+            />
+            <input
+              type="time"
+              value={bookingData.pickupTime}
+              onChange={(e) =>
+                setBookingData((prev) => ({
+                  ...prev,
+                  pickupTime: e.target.value,
+                }))
+              }
+              className="p-2 border-gray-900/20 border rounded-md bg-gray-50w-1/3"
+            />
           </div>
-          <div className="form-group flex flex-col gap-1 sm:w-1/2">
-            <label htmlFor="" className="font-bold flex items-center gap-1">
-              <FaCalendar className="text-primary" /> Drop-off Date & Time
-            </label>
-            <div className="w-full flex gap-2">
-              <input
-                type="date"
-                className="p-2 rounded-md border border-gray-900/20 bg-gray-50 w-2/3"
-              />
-              <input
-                type="time"
-                className="p-2 rounded-md border border-gray-900/20 bg-gray-50 w-1/3"
-              />
-            </div>
+        </div>
+
+        <div className="flex flex-col gap-1 sm:w-1/2">
+          <label className="font-bold flex items-center gap-1">
+            <FaCalendar className="text-primary" /> Drop-off Date & Time
+          </label>
+          <div className="flex gap-2">
+            <input
+              type="date"
+              value={bookingData.dropoffDate}
+              onChange={(e) =>
+                setBookingData((prev) => ({
+                  ...prev,
+                  dropoffDate: e.target.value,
+                }))
+              }
+              className="p-2 border-gray-900/20 border rounded-md bg-gray-50 w-2/3"
+            />
+            <input
+              type="time"
+              value={bookingData.dropoffTime}
+              onChange={(e) =>
+                setBookingData((prev) => ({
+                  ...prev,
+                  dropoffTime: e.target.value,
+                }))
+              }
+              className="p-2 border-gray-900/20 border rounded-md bg-gray-50w-1/3"
+            />
           </div>
         </div>
-        <Button
-          label="Search"
-          onClick={() => {}}
-          className="mt-2 sm:w-50 sm:self-center"
-        />
-      </form>
-    </div>
+      </div>
+
+      <Button
+        label="Show Available Cars"
+        type="submit"
+        className="mt-2"
+        onClick={() => {}}
+      />
+    </form>
   );
 };
 
